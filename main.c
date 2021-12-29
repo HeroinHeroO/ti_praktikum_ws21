@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "sorts.h"
 
 void fill_array_rnd(short *array, unsigned int arr_size) {
     for (int i = 0; i < arr_size; i++) {
@@ -19,6 +20,7 @@ int main(){
     fill_array_rnd(array_16p, 16);
     fill_array_rnd(array_64p, 64);
 
+    bubble_sort(array_eight, 8);
     for (int i = 0; i < 46; i++) {
         if(i<8) {
             printf("eight: %d: %i\n", i, array_eight[i]);
