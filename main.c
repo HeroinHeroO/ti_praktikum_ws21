@@ -20,10 +20,12 @@ int main(){
     fill_array_rnd(array_64p, 64);
 
     for (int i = 0; i < 46; i++) {
-        if(i<8)
-        printf("eight: %d: %i\n", i, array_eight[i]);
-        if(i<16)
-        printf("sixteen: %d: %i\n", i, array_sixteen[i]);
+        if(i<8) {
+            printf("eight: %d: %i\n", i, array_eight[i]);
+        }
+        if(i<16){
+            printf("sixteen: %d: %i\n", i, array_sixteen[i]);
+        }
         printf("sixtyfour: %d: %i\n", i, array_sixtyfour[i]);
     }
 
