@@ -3,4 +3,4 @@ project(ti_praktikum_ws21 C)
 
 set(CMAKE_C_STANDARD 17)
 
-add_executable(ti_praktikum_ws21 main.c)
+add_executable(ti_praktikum_ws21 main.c sorts.c sorts.h)
