@@ -3,25 +3,28 @@
 #include <time.h>
 #include "sorts.h"
 
-void fill_array_rnd(short *array, unsigned int arr_size) {
+short* fill_array_rnd(unsigned int arr_size) {
+    short *array = (short *)malloc(sizeof(short ) * arr_size);
+    if (array = NULL) {
+        return -1;
+    }
+
     for (int i = 0; i < arr_size; i++) {
         *(array +i) = rand() - (RAND_MAX / 2);
     }
+    return array;
 }
 
 int main(){
-    short array_eight[8] = {}, array_sixteen[16] = {}, array_sixtyfour[64] = {};
-    short *array_8p = array_eight;
-    short *array_16p = array_sixteen;
-    short *array_64p = array_sixtyfour;
 
     srand(time(NULL));
-    fill_array_rnd(array_8p, 8);
-    fill_array_rnd(array_16p, 16);
-    fill_array_rnd(array_64p, 64);
+    short *array_eight = fill_array_rnd(8);
+    short *array_sixteen = fill_array_rnd(16);
+    short *array_sixtyfour = fill_array_rnd(64);
 
     bubble_sort(array_eight, 8);
-    for (int i = 0; i < 46; i++) {
+
+    for (int i = 0; i < 64; i++) {
         if(i<8) {
             printf("eight: %d: %i\n", i, array_eight[i]);
         }
@@ -30,7 +33,9 @@ int main(){
         }
         printf("sixtyfour: %d: %i\n", i, array_sixtyfour[i]);
     }
-
+    free(array_eight);
+    free(array_sixteen);
+    free(array_sixtyfour);
 
     return 0;
 }

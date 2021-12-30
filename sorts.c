@@ -12,4 +12,3 @@ void bubble_sort(short array[], unsigned int size) {
         }
     }
 }
-
