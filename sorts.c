@@ -1,11 +1,8 @@
 //
 //sortsalgorithmen
-//
-// Insertion sort in C
 
 #include <stdio.h>
-
-
+// Insertion sort in C
 void insertion_Sort(int array[], int arraysize){
     //geht alle Elemente des arrays durch
    //element startet beim 2ten elment des arrays
@@ -31,6 +28,62 @@ void insertion_Sort(int array[], int arraysize){
     }
 
 }
+
+//quicksort
+/* Das letzte element des Arrays wird als Pivot festgelegt. Danach werden alle Elemente [0-n-1] angesehen und: wenn eine Element kleiner als das
+Pivot (am Ende des Arrays) ist, wird es auf Platz i (0++) des Arrays getauscht (das darauffolgende, kleinere wird auf platz 1 getauscht, usw.).
+Nachdem alle Elemente gecheckt wurden, wird das Pivot mit dem ersten Element, das nicht getauscht wurde (i+1 -> also größer ist als Pivot) getauscht.
+Das neue Pivot element wird mit i+1 returned.
+In der rekursivion Funktion quickSort wird dann die Partition Funktion noch einmal für links (alle Elemente kleiner des neuen Pivot) des neuen(!) Pivot durchgeführt, danach rechts davon.
+
+*/
+
+// funktion um zwei elemente zu tauschen
+void swap(int *i, int *j) {
+    int temp = *i;
+    *i = *j;
+    *i = temp;
+}
+
+
+//Funktion nimmt array und erstes element und letztes element
+int partition(int array[], int first_element, int last_element) {
+    // das element an der letzten stelle wird als Pivot-Element festgelegt
+    int pivotelement = array[last_element];
+
+    int i = (first_element - 1); //  temporärer pivot index-> da soll kleineres element hin
+    //bzw. zum schluss das pivot element hin
+  for (int j = first_element; j < last_element; j++)  {//loop  durch alle elemente
+        if (array[j] < pivotelement) { // Wenn current Element <= pivotelement
+            i++; // temporärer pivot index  +1
+            swap(&array[i], &array[j]); // tausche current element arr[j]
+            // mit arr[i] welches größer als pivotelment ist
+        }
+    }
+
+    // tauscht das pivot element arr[last_elment], m mit dem ersten Element, das nicht getauscht wurde
+    // also dem element welches größer als pivot ist arr[i+1]
+    swap(&array[i + 1], &array[last_element]);
+
+    // return the partition point -> stelle/index des einsortierten pivot elements
+    return (i + 1);
+}
+
+
+void quickSort(int array[], int first_element, int last_element) {
+    if (first_element < last_element) { //kontrolliert ob letztes element wirklich kleiner als erstes element ist
+        // return the partition point -> index des einsortierten pivot elements
+        int pivot = partition(array, first_element, last_element);
+//recursive funktion: macht partition für alle elemente links vom pivot element
+        quickSort(array, first_element, pivot - 1);
+
+
+//recursive funktion: macht partition für alle elemente rechts vom pivot element
+        quickSort(array, pivot + 1, last_element);
+    }
+}
+
+
 
 
 
