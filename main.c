@@ -108,7 +108,6 @@ int main(){
     free(array_sixtyfour);
 
 //1.2 LEISTUNGSVERGLEICH
-// roh version // keine Ahnung ob das funktioniert muss noc getested werden
 
 
     int arraysize[] ={8, 32, 128, 512, 2048, 8192, 32768};
@@ -116,47 +115,57 @@ int main(){
 
     FILE *fp;
 
-    fp = fopen("leistungsvergleich.txt", "r");
+    fp = fopen("leistungsvergleich.txt", "w+");
+
 
     if(fp == NULL)
     {
         printf("Error opening file\n");
         exit(1);
     }
-    printf("Algorithmus:\t\tArray\t\t Zeit\n");
+    fprintf(fp,"Algorithmus:\t\tArray\t\t Zeit\n");
 
 
 //bubble sort
 
+
 //randomarray
     for (int i = 0; i < 7; ++i) {
+        short *array_x = fill_array_rnd(arraysize[i]);
         start_t = clock();
-        bubblesort(fill_array_rnd(arraysize[i]), arraysize[i]) ; //arraysize[i] = {8,...}
+        bubble_sort(array_x, arraysize[i]) ; //arraysize[i] = {8,...}
         end_t = clock();
-        total_t = (double)(end_t - start_t) ;/ CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fscanf(fp, "Algorithmus: bubblesort\t\tArray: random \t\tZeit: %f\n"
-                 ,total_t);
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: bubblesort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
     }
-
-    //ascending array
+//aufsteigend
     for (int i = 0; i < 7; ++i) {
+        short *array_x = fill_array_asc(arraysize[i]);
         start_t = clock();
-        bubblesort(fill_array_asc(arraysize[i]), arraysize[i]) ; //arraysize[i] = {8,...}
+        
+        bubble_sort(array_x, arraysize[i]) ; //arraysize[i] = {8,...}
         end_t = clock();
-        total_t = (double)(end_t - start_t) ;/ CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fscanf(fp, "Algorithmus: bubblesort\t\tArray: aufsteigend \t\tZeit: %f\n"
-                ,total_t);
-    }
 
-    //descending array
-    for (int i = 0; i < 7; ++i) {
-        start_t = clock();
-        bubblesort(fill_array_des(arraysize[i]), arraysize[i]) ; //arraysize[i] = {8,...}
-        end_t = clock();
-        total_t = (double)(end_t - start_t) ;/ CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fscanf(fp, "Algorithmus: bubblesort\t\tArray: absteigend \t\tZeit: %f\n"
-                ,total_t);
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: bubblesort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
     }
+    //absteigend
+    for (int i = 0; i < 7; ++i) {
+        short *array_x = fill_array_des(arraysize[i]);
+        start_t = clock();
+        bubble_sort(array_x, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: bubblesort\t\tArray: absteigendsteigend \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+    //other algorithmen
+    fclose(fp);
 
 //other algorithmen
     fclose(fp);
