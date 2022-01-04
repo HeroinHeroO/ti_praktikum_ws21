@@ -42,7 +42,7 @@ In der rekursivion Funktion quickSort wird dann die Partition Funktion noch einm
 void swap(int *i, int *j) {
     int temp = *i;
     *i = *j;
-    *i = temp;
+    *j = temp;
 }
 
 
