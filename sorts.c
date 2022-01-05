@@ -14,7 +14,7 @@ void bubble_sort(short array[], unsigned int size) {
 }
 
 // sortiert und vereint die Subarrays miteinander.
-void merge(int array[], int first_index, int mid, int last_index) { // die Funktion "merg" benötigt das Array, die erste Indexstelle den Mittelwert und die letzte Indexstelle
+void merge(short array[], int first_index, int mid, int last_index) { // die Funktion "merg" benötigt das Array, die erste Indexstelle den Mittelwert und die letzte Indexstelle
 
     //die zwei Startindexstellen der Arrays
     int n1 = mid - first_index + 1;
@@ -60,7 +60,7 @@ void merge(int array[], int first_index, int mid, int last_index) { // die Funkt
 }
 
 // das Array wird in Subarrays geteilt, sortiert und wieder miteinander verbunden.
-void merge_Sort(int array[], int first_index, int last_index) {  // die Funktion "merg_Sort" benötigt das Array, die erste und letzte Indexstelle
+void merge_Sort(short array[], int first_index, int last_index) {  // die Funktion "merg_Sort" benötigt das Array, die erste und letzte Indexstelle
 
     // Überprüfung, ob nur eine Indexstelle existiert.
     if (first_index < last_index) {
@@ -78,7 +78,7 @@ void merge_Sort(int array[], int first_index, int last_index) {  // die Funktion
 }
 
 // Insertion sort in C
-void insertion_Sort(int array[], int arraysize) {
+void insertion_Sort(short array[], int arraysize) {
     //geht alle Elemente des arrays durch
     //element startet beim 2ten elment des arrays
     for (int i = 1; i<arraysize; i++ ){
@@ -90,7 +90,7 @@ void insertion_Sort(int array[], int arraysize) {
         // mit vergleichselment> "element"
         // werden nach rechts verschoben;
 
-        while (  array[j]> element  && j>= 0) {
+        while (array[j]> element  && j>= 0) {
             array[j+1] = array[j]; // linkes element wird ein nach rechts verschoben
             --j; // j index zeigt auf ein element weiter links
 
@@ -113,7 +113,7 @@ In der rekursivion Funktion quickSort wird dann die Partition Funktion noch einm
 */
 
 // funktion um zwei elemente zu tauschen
-void swap(int *i, int *j) {
+void swap(short *i, short *j) {
     int temp = *i;
     *i = *j;
     *j = temp;
@@ -121,7 +121,7 @@ void swap(int *i, int *j) {
 
 
 //Funktion nimmt array und erstes element und letztes element
-int partition(int array[], int first_element, int last_element) {
+int partition(short array[], int first_element, int last_element) {
     // das element an der letzten stelle wird als Pivot-Element festgelegt
     int pivotelement = array[last_element];
 
@@ -144,7 +144,7 @@ int partition(int array[], int first_element, int last_element) {
 }
 
 
-void quickSort(int array[], int first_element, int last_element) {
+void quickSort(short array[], int first_element, int last_element) {
     if (first_element < last_element) { //kontrolliert ob letztes element wirklich kleiner als erstes element ist
         // return the partition point -> index des einsortierten pivot elements
         int pivot = partition(array, first_element, last_element);

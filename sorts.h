@@ -9,15 +9,15 @@
 void bubble_sort(short array[], unsigned int size);
 
 //Mergesort-functions
-void merge(int array[], int first_index, int mid, int last_index);
-void merge_Sort(int array[], int first_index, int last_index);
+void merge(short array[], int first_index, int mid, int last_index);
+void merge_Sort(short array[], int first_index, int last_index);
 
 //Inertionsort-functions
-void insertion_Sort(int array[], int arraysize);
+void insertion_Sort(short array[], int arraysize);
 
 //Quicksort-functions
-void swap(int *i, int *j);
-int partition(int array[], int first_element, int last_element);
-void quickSort(int array[], int first_element, int last_element);
+void swap(short *i, short *j);
+int partition(short array[], int first_element, int last_element);
+void quickSort(short array[], int first_element, int last_element);
 
 #endif //TI_PRAKTIKUM_WS21_SORTS_H
