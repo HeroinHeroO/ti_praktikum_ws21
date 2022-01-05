@@ -162,6 +162,7 @@ int main(){
 
 
     //random
+    double bubbles[7];
     for (int i = 0; i < 7; ++i) {
         srand(10); //set seed to 10 to recreate fill data
         short *array_x = fill_array_rnd(arraysize[i]);
@@ -172,9 +173,14 @@ int main(){
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fprintf(fp, "Algorithmus: bubblesort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n"
-                ,arraysize[i],total_t);
+        bubbles[i] = total_t;
+        fprintf(fp, "Algorithmus: bubblesort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],bubbles[i]);
+
     }
+    for (int i = 0; i < 7; i++) {
+        printf("[%f] ", bubbles[i]);
+    }
+
     //aufsteigend
     for (int i = 0; i < 7; ++i) {
         short *array_x = fill_array_asc(arraysize[i]);
@@ -342,5 +348,5 @@ Geben Sie am Ende des Programms alle Laufzeiten sowie minimum, maximum und durch
     for (int i = 0; i < 20; i++) {
         printf("[%f] ", runtime[i]);
     }
-    
+
 }
