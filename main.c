@@ -2,53 +2,21 @@
 #include <stdlib.h>
 #include <time.h>
 #include "sorts.h"
+#include "littlehelpers.h"
 
-//function to initialize array pointer
-short* fill_array_rnd(unsigned int arr_size) {
-    short *array = (short *)malloc(sizeof(short ) * arr_size);
-    if (array == NULL) {                                                          //abort if no memory is free
-        printf("BAD MEMORY");
-        exit(EXIT_FAILURE);
-    }
 
-    for (int i = 0; i < arr_size; i++) {
-        *(array +i) = rand() - (RAND_MAX / 2);                                    //subtract RAND_MAX/2 te get negative values
-    }
-    return array;                                                                 //returns memory address
-}
-
-//function to print array
-void print_array(short array[], unsigned  size) {
-    for (int i = 0; i < size; i++) {
-        printf("[%d] ", array[i]);
-        if ((i + 1) % 15 == 0) {                                                  //for newline after 15 output numbers
-            printf("\n");
-        }else if (i == (size - 1)) {                                              //newline after last output
-            printf("\n");
-        }
-    }
-}
-
-//function to confirm sorting
-void check_sort(short array[], unsigned int size) {
-    for (int i = 0; i < size; i++) {
-        if (array[i] > array[i + 1] && i != (size - 1)) {                         //checks for ascending sort. For descending change to '<'
-            printf("Sorting array with size of %d FAILED!\n", size);
-            break;
-        } else if (i == size - 1) {
-            printf("Successfully sorted array with size of %d\n", size);
-        }
-    }
-}
 
 int main(){
+
+    // 1.1 BASISIMPLEMENTIERUNG
 
     srand(time(NULL));
     short *array_eight = fill_array_rnd(8);
     short *array_sixteen = fill_array_rnd(16);
     short *array_sixtyfour = fill_array_rnd(64);
 
-    printf("BUBBLESORT:\n");
+    //BUBBLESORT
+    /*printf("BUBBLESORT:\n");
     printf("Unsorted array with size of 8:\n");
     print_array(array_eight, 8);
     printf("Unsorted array with size of 16:\n");
@@ -75,6 +43,7 @@ int main(){
     free(array_sixteen);
     free(array_sixtyfour);
 
+    //MERGESORT
     array_eight = fill_array_rnd(8);
     array_sixteen = fill_array_rnd(16);
     array_sixtyfour = fill_array_rnd(64);
@@ -106,6 +75,7 @@ int main(){
     free(array_sixteen);
     free(array_sixtyfour);
 
+    //INSERTIONSORT
     array_eight = fill_array_rnd(8);
     array_sixteen = fill_array_rnd(16);
     array_sixtyfour = fill_array_rnd(64);
@@ -137,6 +107,7 @@ int main(){
     free(array_sixteen);
     free(array_sixtyfour);
 
+    //QUICKSORT
     array_eight = fill_array_rnd(8);
     array_sixteen = fill_array_rnd(16);
     array_sixtyfour = fill_array_rnd(64);
@@ -166,7 +137,110 @@ int main(){
 
     free(array_eight);
     free(array_sixteen);
-    free(array_sixtyfour);
+    free(array_sixtyfour); */
+
+    //1.2 LEISTUNGSVERGLEICH
+
+
+    int arraysize[] ={8, 32, 128, 512, 2048, 8192, 32768};
+    clock_t start_t, end_t, total_t;
+
+    FILE *fp;
+
+    fp = fopen("leistungsvergleich.txt", "w+");
+
+
+    if(fp == NULL)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    fprintf(fp,"Algorithmus:\t\tArray\t\t Zeit\n");
+
+
+    //BUBBLESORT
+
+
+    //random
+    for (int i = 0; i < 7; ++i) {
+        srand(10); //set seed to 10 to recreate fill data
+        short *array_x = fill_array_rnd(arraysize[i]);
+        //print_array(array_x, arraysize[i]); //check if same data is created
+        //printf("\nARRAY END\n");
+        start_t = clock();
+        bubble_sort(array_x, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: bubblesort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+    //aufsteigend
+    for (int i = 0; i < 7; ++i) {
+        short *array_x = fill_array_asc(arraysize[i]);
+        start_t = clock();
+
+        bubble_sort(array_x, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: bubblesort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+    //absteigend
+    for (int i = 0; i < 7; ++i) {
+        short *array_x = fill_array_des(arraysize[i]);
+        start_t = clock();
+        bubble_sort(array_x, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: bubblesort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+
+    //INSERTIONSORT
+    for (int i = 0; i < 7; ++i) {
+        srand(10); //set seed to 10 to recreate fill data
+        short *array_x = fill_array_rnd(arraysize[i]);
+        //print_array(array_x, arraysize[i]); //check if same data is created
+        //printf("\nARRAY END\n");
+        start_t = clock();
+        insertion_Sort(array_x, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: insertionsort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+    //aufsteigend
+    for (int i = 0; i < 7; ++i) {
+        short *array_x = fill_array_asc(arraysize[i]);
+        start_t = clock();
+
+        insertion_Sort(array_x, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: insertionsort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+    //absteigend
+    for (int i = 0; i < 7; ++i) {
+        short *array_x = fill_array_des(arraysize[i]);
+        start_t = clock();
+        insertion_Sort(array_x, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: insertionsort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+
+    //other algorithmen
+    fclose(fp);
 
     return 0;
 }
