@@ -162,7 +162,7 @@ int main(){
 
 
     //random
-    for (int i = 0; i < 7; ++i) {
+    /*for (int i = 0; i < 7; ++i) {
         srand(10); //set seed to 10 to recreate fill data
         short *array_x = fill_array_rnd(arraysize[i]);
         //print_array(array_x, arraysize[i]); //check if same data is created
@@ -239,6 +239,85 @@ int main(){
                 ,arraysize[i],total_t);
     }
 
+    //MERGESORT
+    for (int i = 0; i < 7; ++i) {
+        srand(10); //set seed to 10 to recreate fill data
+        short *array_x = fill_array_rnd(arraysize[i]);
+        //print_array(array_x, arraysize[i]); //check if same data is created
+        //printf("\nARRAY END\n");
+        start_t = clock();
+        merge_Sort(array_x,0, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: mergesort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+    //aufsteigend
+    for (int i = 0; i < 7; ++i) {
+        short *array_x = fill_array_asc(arraysize[i]);
+        start_t = clock();
+
+        merge_Sort(array_x,0, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus:mergesort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+    //absteigend
+    for (int i = 0; i < 7; ++i) {
+        short *array_x = fill_array_des(arraysize[i]);
+        start_t = clock();
+        merge_Sort(array_x,0, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: mergesort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }*/
+
+   //QUICKSORT
+    for (int i = 0; i < 7; ++i) {
+        srand(10); //set seed to 10 to recreate fill data
+        short *array_x = fill_array_rnd(arraysize[i]);
+        //print_array(array_x, arraysize[i]); //check if same data is created
+        //printf("\nARRAY END\n");
+        start_t = clock();
+        quickSort(array_x, 0, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: quicksort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+    /*//aufsteigend
+    for (int i = 0; i < 7; ++i) {
+        short *array_x = fill_array_asc(arraysize[i]);
+        start_t = clock();
+
+        quickSort(array_x, 0, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus:quicksort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);
+    }
+   //absteigend
+    for (int i = 0; i < 7; ++i) {
+        srand(10); //set seed to 10 to recreate fill data
+        short *array_x = fill_array_des(arraysize[i]);
+        //print_array(array_x, arraysize[i]); //check if same data is created
+        //printf("\nARRAY END\n");
+        start_t = clock();
+        quickSort(array_x, 0, arraysize[i]) ; //arraysize[i] = {8,...}
+        end_t = clock();
+        free(array_x);
+        total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
+        fprintf(fp, "Algorithmus: quicksort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n"
+                ,arraysize[i],total_t);} */
     //other algorithmen
     fclose(fp);
 
