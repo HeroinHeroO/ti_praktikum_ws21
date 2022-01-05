@@ -162,7 +162,7 @@ int main(){
 
 
     //random
-    /*for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < 7; ++i) {
         srand(10); //set seed to 10 to recreate fill data
         short *array_x = fill_array_rnd(arraysize[i]);
         //print_array(array_x, arraysize[i]); //check if same data is created
@@ -276,7 +276,7 @@ int main(){
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
         fprintf(fp, "Algorithmus: mergesort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n"
                 ,arraysize[i],total_t);
-    }*/
+    }
 
    //QUICKSORT
     for (int i = 0; i < 7; ++i) {
@@ -321,5 +321,26 @@ int main(){
     //other algorithmen
     fclose(fp);
 
-    return 0;
+    //1.3
+    /*Schreiben Sie ein Programm, das zeigt, dass einmalige Codedurchläufe nur beschränkt für Zeitvergleiche aussagekräftig2 sind.
+     * Führen Sie den Bubblesort mit dem gleichen zufälligen Set an Daten mit einer Arraygröße von 2000 zwanzigmal aus und vergleichen Sie die Laufzeiten.
+Geben Sie am Ende des Programms alle Laufzeiten sowie minimum, maximum und durchschnittliche Laufzeiten aus.*/
+    double runtime[20];
+    for (int i = 0; i <= 20 ; ++i) {
+        srand(10);
+        short *array_x = fill_array_rnd(2000);
+        //print_array(array_x, arraysize[i]); //check if same data is created
+        //printf("\nARRAY END\n");
+        start_t = clock();
+        bubble_sort(array_x, 2000) ; //arraysize[i] = {8,...}
+        end_t = clock();
+        free(array_x);
+        total_t = (double)(end_t - start_t);
+        runtime[i] = total_t;
+
+    }
+    for (int i = 0; i < 20; i++) {
+        printf("[%f] ", runtime[i]);
+    }
+    
 }
