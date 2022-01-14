@@ -42,7 +42,7 @@ struct word_and_key
     char random_string[10];
 };
 
-search_key(  struct word_and_key element_array[400],int s_key,int length){
+void search_key(struct word_and_key element_array[400],int s_key,int length){
     for(int counter=0; counter<length; counter++)
     {
         if(element_array[counter].key == s_key){
@@ -88,26 +88,29 @@ int binarySearch_int(struct word_and_key arr[], int left, int right, int s_eleme
 {
     while (left <= right) {
         int m = left + (right - left) / 2;
-        if (arr[m].key == s_element)
+        if (arr[m].key == s_element) {
             return m;
-        if (arr[m].key<s_element)
+        } if (arr[m].key<s_element) {
             left = m + 1;
-        else
+        } else {
             right = m - 1;
+        }
     }
     return -1;// if not found
 }
 
-int binarySearch_str(struct word_and_key arr[], int left, int right, char* s_string)
+int binarySearch_str(struct word_and_key arr[], int left, int right, char *s_string)
 {
     while (left <= right) {
         int m = left + (right - left) / 2;
-        if (strcmp(arr[m].random_string , s_string)==0)
+        if (strcmp(arr[m].random_string, s_string) == 0) {
             return m;
-        if (strcmp(arr[m].random_string, s_string<1))
+        }
+        if (strcmp(arr[m].random_string, s_string) < 1) {
             left = m + 1;
-        else
+        } else {
             right = m - 1;
+        }
     }
     return -1;// if not found
 }
@@ -124,75 +127,69 @@ int main(void){
         strcpy(element_array[counter].random_string,randomString(4));
 
     }
+    char c;
 
-
-    while(1){
-
+    do {
         //search for string
         // first sort
         printf("sort strings \n");
-        bubble_Strings(element_array,400);
+        bubble_Strings(element_array, 400);
 
         //control if it worked
         printf("first 10 strings \n");
-        for(counter=0; counter<10; counter++)
-        {
+        for (counter = 0; counter < 10; counter++) {
 
             printf("\nkey:%d\t String:%s\t ",
-                   element_array[counter].key,element_array[counter].random_string);
+                   element_array[counter].key, element_array[counter].random_string);
         }
         printf("next \n");
 
-        /* char s_string[10];//get string
-          printf("enter string you want to search for \n");
-          scanf("%s", &s_string);
+        char *sear_string = malloc(sizeof(char) * 10);//get string
+        printf("enter string you want to search for \n");
+        scanf("%s", sear_string);
 
 
-          //binary search string
-          int resultstr = binarySearch_str(element_array,0,400,s_string);
-          if(resultstr==-1){
-              printf("str Miss\n");
-          }
-          else{printf("resultstr %d \n",resultstr);}*/
+        //binary search string
+        int resultstr = binarySearch_str(element_array, 0, 400, sear_string);
+        if (resultstr == -1) {
+            printf("str Miss\n");
+        } else {
+            printf(" Hit \n result index [%d] ", resultstr);
+        }
+        free(sear_string);
 
 // search for int/key
 //sort
         printf("sort integers \n");
-        bubble_sort_int(element_array,400);
+        bubble_sort_int(element_array, 400);
         int searched_int;
 
         //print first 10 elments control
 
         printf("first 10 elements \n");
-        for(counter=0; counter<10; counter++)
-        {
+        for (counter = 0; counter < 10; counter++) {
 
             printf("\nkey:%d\t String:%s\t ",
-                   element_array[counter].key,element_array[counter].random_string);
+                   element_array[counter].key, element_array[counter].random_string);
         }
         //int searched_int = 538;
         printf("Enter the number that should be searched \n");
         scanf("%d", &searched_int);
         //printf("enter int you want to search for \n");
         //binary search return -1 if miss else it returns index
-        int resultint = binarySearch_int(element_array,0,400,searched_int);
-        if(resultint==-1){
+        int resultint = binarySearch_int(element_array, 0, 400, searched_int);
+        if (resultint == -1) {
             printf("Miss\n");
+        } else {
+            printf(" Hit \n result index [%d] ", resultint);
         }
-        else{printf(" Hit \n result index [%d] ",resultint);}
 
         printf("Do you want to continue? press y \n");
-        char choice = 'j';
-        choice = getchar();
+
         getchar();
-        if(choice!= 'j'){
-            break;
-        }
-
-
+        scanf("%c", &c);
     }
-
-
+    while (c == 'y');
 
     return 0;
 }
