@@ -162,7 +162,7 @@ int main(){
 
 
     //random
-    double bubbles[7];
+    double vergleichprint[7];
     for (int i = 0; i < 7; ++i) {
         srand(10); //set seed to 10 to recreate fill data
         short *array_x = fill_array_rnd(arraysize[i]);
@@ -173,12 +173,12 @@ int main(){
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        bubbles[i] = total_t;
-        fprintf(fp, "Algorithmus: bubblesort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],bubbles[i]);
+        vergleichprint[i] = total_t;
+        fprintf(fp, "Algorithmus: bubblesort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],vergleichprint[i]);
 
     }
     for (int i = 0; i < 7; i++) {
-        printf("[%f] ", bubbles[i]);
+        printf("[%f] ", vergleichprint[i]);
     }
 
     //aufsteigend
@@ -191,8 +191,8 @@ int main(){
 
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fprintf(fp, "Algorithmus: bubblesort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n"
-                ,arraysize[i],total_t);
+        vergleichprint[i] = total_t;
+        fprintf(fp, "Algorithmus: bubblesort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],vergleichprint[i]);
     }
     //absteigend
     for (int i = 0; i < 7; ++i) {
@@ -202,8 +202,8 @@ int main(){
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fprintf(fp, "Algorithmus: bubblesort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n"
-                ,arraysize[i],total_t);
+        vergleichprint[i] = total_t;
+        fprintf(fp, "Algorithmus: bubblesort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],vergleichprint[i]);
     }
 
     //INSERTIONSORT
@@ -217,8 +217,8 @@ int main(){
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fprintf(fp, "Algorithmus: insertionsort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n"
-                ,arraysize[i],total_t);
+        vergleichprint[i] = total_t;
+        fprintf(fp, "Algorithmus: insertionsort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],vergleichprint[i]);
     }
     //aufsteigend
     for (int i = 0; i < 7; ++i) {
@@ -230,8 +230,8 @@ int main(){
 
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fprintf(fp, "Algorithmus: insertionsort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n"
-                ,arraysize[i],total_t);
+        vergleichprint[i] = total_t;
+        fprintf(fp, "Algorithmus: insertionsort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],vergleichprint[i]);
     }
     //absteigend
     for (int i = 0; i < 7; ++i) {
@@ -241,8 +241,8 @@ int main(){
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fprintf(fp, "Algorithmus: insertionsort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n"
-                ,arraysize[i],total_t);
+        vergleichprint[i] = total_t;
+        fprintf(fp, "Algorithmus: insertionsort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],vergleichprint[i]);
     }
 
     //MERGESORT
@@ -256,8 +256,8 @@ int main(){
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fprintf(fp, "Algorithmus: mergesort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n"
-                ,arraysize[i],total_t);
+        vergleichprint[i] = total_t;
+        fprintf(fp, "Algorithmus: mergesort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],vergleichprint[i]);
     }
     //aufsteigend
     for (int i = 0; i < 7; ++i) {
@@ -269,8 +269,8 @@ int main(){
 
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fprintf(fp, "Algorithmus:mergesort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n"
-                ,arraysize[i],total_t);
+        vergleichprint[i] = total_t;
+        fprintf(fp, "Algorithmus: mergesort\t\tArray: aufsteigend \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],vergleichprint[i]);
     }
     //absteigend
     for (int i = 0; i < 7; ++i) {
@@ -280,8 +280,8 @@ int main(){
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fprintf(fp, "Algorithmus: mergesort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n"
-                ,arraysize[i],total_t);
+        vergleichprint[i] = total_t;
+        fprintf(fp, "Algorithmus: mergesort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],vergleichprint[i]);
     }
 
    //QUICKSORT
@@ -295,8 +295,8 @@ int main(){
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
-        fprintf(fp, "Algorithmus: quicksort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n"
-                ,arraysize[i],total_t);
+        vergleichprint[i] = total_t;
+        fprintf(fp, "Algorithmus: quicksort\t\tArray: random \t\t arraysize: %d \t\tZeit: %f\n",arraysize[i],vergleichprint[i]);
     }
     /*//aufsteigend
     for (int i = 0; i < 7; ++i) {
