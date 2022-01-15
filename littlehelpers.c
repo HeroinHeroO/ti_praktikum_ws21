@@ -12,7 +12,7 @@ short* fill_array_rnd(unsigned int arr_size) {
     }
 
     for (int i = 0; i < arr_size; i++) {
-        *(array +i) = rand() - (RAND_MAX / 2);                                    //subtract RAND_MAX/2 te get negative values
+        *(array +i) = rand() - (RAND_MAX / 2);                                    //subtract RAND_MAX/2 to get negative values
     }
     return array;                                                                 //returns memory address
 }
@@ -26,7 +26,7 @@ short* fill_array_des(unsigned int arr_size) {
     }
 
     for (int i = 0; i < arr_size; i++) {
-        *(array +i) = arr_size-i;                                    //subtract RAND_MAX/2 te get negative values
+        *(array + i) = arr_size - i - 1;
     }
     return array;                                                                 //returns memory address
 }

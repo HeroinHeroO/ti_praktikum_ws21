@@ -13,6 +13,20 @@ void bubble_sort(short array[], unsigned int size) {
     }
 }
 
+//bubble sort for integer arrays
+
+void bubble_sort_double(double array[], unsigned int size) {
+    for (int i = 0; i < (size -1); i++) {                   // look at each array element.
+        for (int j = 0; j < (size - i - 1); j++) {          // compare array elements.
+            if (array[j] > array[j + 1]) {                  // sort ascending. Change to < for descending sort.
+                int tmp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = tmp;
+            }
+        }
+    }
+}
+
 // sortiert und vereint die Subarrays miteinander.
 void merge(short array[], int first_index, int mid, int last_index) { // die Funktion "merg" benötigt das Array, die erste Indexstelle den Mittelwert und die letzte Indexstelle
 
