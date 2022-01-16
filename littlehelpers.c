@@ -5,7 +5,7 @@
 
 //function to initialize array pointer
 short* fill_array_rnd(unsigned int arr_size) {
-    short *array = (short *)malloc(sizeof(short ) * arr_size);
+    short *array = (short *)malloc(sizeof(short) * arr_size);
     if (array == NULL) {                                                          //abort if no memory is free
         printf("BAD MEMORY");
         exit(EXIT_FAILURE);
@@ -19,7 +19,7 @@ short* fill_array_rnd(unsigned int arr_size) {
 
 //function to initialize array pointer for descending order
 short* fill_array_des(unsigned int arr_size) {
-    short *array = (short *)malloc(sizeof(short ) * arr_size);
+    short *array = (short *)malloc(sizeof(short) * arr_size);
     if (array == NULL) {                                                          //abort if no memory is free
         printf("BAD MEMORY");
         exit(EXIT_FAILURE);
@@ -33,7 +33,7 @@ short* fill_array_des(unsigned int arr_size) {
 
 //function to initialize array pointer for ascending order
 short* fill_array_asc(unsigned int arr_size) {
-    short *array = (short *)malloc(sizeof(short ) * arr_size);
+    short *array = (short *)malloc(sizeof(short) * arr_size);
     if (array == NULL) {                                                          //abort if no memory is free
         printf("BAD MEMORY");
         exit(EXIT_FAILURE);
@@ -60,7 +60,7 @@ void print_array(short array[], unsigned int size) {
 //function to confirm sorting
 void check_sort(short array[], unsigned int size) {
     for (int i = 0; i < size; i++) {
-        if (array[i] > array[i + 1] && i != (size - 1)) {                         //checks for ascending sort. For descending change to '<'
+        if ((i != size - 1) && array[i] > array[i + 1]) {                         //checks for ascending sort. For descending change to '<'
             printf("Sorting array with size of %d FAILED!\n", size);
             break;
         } else if (i == size - 1) {
