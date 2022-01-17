@@ -20,7 +20,7 @@
         jeweilige Arraygröße aus. Geben Sie diese Informationen tabellarisch aus um auf den ersten Blick
         eine Beurteilung hinsichtlich der Performanz treffen zu können. Wählen Sie dazu eine geeignete
         Maßeinheit.*/
-/*
+
 int main() {
 
     int arraysize[] = {8, 32, 128, 512, 2048, 8192, 32768};
@@ -122,7 +122,7 @@ int main() {
         srand(10); //set seed to 10 to recreate fill data
         short *array_x = fill_array_rnd(arraysize[i]);
         start_t = clock();
-        merge_Sort(array_x,0, arraysize[i]) ; //arraysize[i] = {8,...}
+        merge_Sort(array_x,0, arraysize[i] - 1) ; //arraysize[i] = {8,...}
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
@@ -133,7 +133,7 @@ int main() {
     for (int i = 0; i < 7; i++) {
         short *array_x = fill_array_asc(arraysize[i]);
         start_t = clock();
-        merge_Sort(array_x,0, arraysize[i]) ; //arraysize[i] = {8,...}
+        merge_Sort(array_x,0, arraysize[i] - 1) ; //arraysize[i] = {8,...}
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
@@ -144,7 +144,7 @@ int main() {
     for (int i = 0; i < 7; i++) {
         short *array_x = fill_array_des(arraysize[i]);
         start_t = clock();
-        merge_Sort(array_x,0, arraysize[i]) ; //arraysize[i] = {8,...}
+        merge_Sort(array_x,0, arraysize[i] - 1) ; //arraysize[i] = {8,...}
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
@@ -159,7 +159,7 @@ int main() {
         srand(10); //set seed to 10 to recreate fill data
         short *array_x = fill_array_rnd(arraysize[i]);
         start_t = clock();
-        quickSort(array_x, 0, arraysize[i]) ; //arraysize[i] = {8,...}
+        quickSort(array_x, 0, arraysize[i] - 1) ; //arraysize[i] = {8,...}
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
@@ -171,7 +171,7 @@ int main() {
     for (int i = 0; i < 6; i++) {
         short *array_x = fill_array_asc(arraysize[i]);
         start_t = clock();
-        quickSort(array_x, 0, arraysize[i]) ; //arraysize[i] = {8,...}
+        quickSort(array_x, 0, arraysize[i] - 1) ; //arraysize[i] = {8,...}
         end_t = clock();
         free(array_x);
         total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
@@ -183,7 +183,7 @@ int main() {
     for (int i = 0; i < 6; i++) {
         short *array_x = fill_array_des(arraysize[i]);
         start_t = clock();
-        quickSort(array_x, 0, arraysize[i]); //arraysize[i] = {8,...}
+        quickSort(array_x, 0, arraysize[i] - 1); //arraysize[i] = {8,...}
         end_t = clock();
         free(array_x);
         total_t = (double) (end_t - start_t) / CLOCKS_PER_SEC; // number of seconds the function used  CLOCKS_PER_SEC -> Dividing a count of clock ticks by this expression yields the number of seconds
@@ -191,4 +191,4 @@ int main() {
         fprintf(fp, "Algorithmus: quicksort\t\tArray: absteigend \t\t arraysize: %d \t\tZeit: %f\n", arraysize[i], vergleichprint[i]);
     }
     fclose(fp);
-}*/
+}

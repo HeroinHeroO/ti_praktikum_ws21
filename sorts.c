@@ -13,19 +13,6 @@ void bubble_sort(short array[], unsigned int size) {
     }
 }
 
-//bubble sort for integer arrays
-
-void bubble_sort_double(double array[], unsigned int size) {
-    for (int i = 0; i < (size -1); i++) {                   // look at each array element.
-        for (int j = 0; j < (size - i - 1); j++) {          // compare array elements.
-            if (array[j] > array[j + 1]) {                  // sort ascending. Change to < for descending sort.
-                int tmp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = tmp;
-            }
-        }
-    }
-}
 
 // sortiert und vereint die Subarrays miteinander.
 void merge(short array[], int first_index, int mid, int last_index) { // die Funktion "merg" benötigt das Array, die erste Indexstelle den Mittelwert und die letzte Indexstelle
@@ -104,12 +91,12 @@ void insertion_Sort(short array[], int arraysize) {
         // mit vergleichselment> "element"
         // werden nach rechts verschoben;
 
-        while (array[j]> element  && j>= 0) {
-            array[j+1] = array[j]; // linkes element wird ein nach rechts verschoben
-            --j; // j index zeigt auf ein element weiter links
+        while (array[j] > element  && j >= 0) {
+            array[j + 1] = array[j]; // linkes element wird ein nach rechts verschoben
+            j--; // j index zeigt auf ein element weiter links
 
         }
-        array[j+1] = element;
+        array[j + 1] = element;
         // wenn linke vergleichs_elmente > "element" ,
         // dann wird "element"  eins vor letzen vergleichs_elment gesetzt
         //Ansonsten bleibt "element" auf dem selbem index

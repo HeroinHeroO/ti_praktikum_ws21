@@ -10,7 +10,7 @@
         Daten mit einer Arraygröße von 2000 zwanzigmal aus und vergleichen Sie die Laufzeiten.
         Geben Sie am Ende des Programms alle Laufzeiten sowie minimum, maximum und durchschnittliche
         Laufzeiten aus */
-
+/*
 int main() {
     clock_t start_t, end_t, total_t;
     double runtime[20];
@@ -41,4 +41,4 @@ int main() {
         }
     }
     printf("\nShortest: %f\nLongest: %f\nAverage: %f\n", runtime[0], runtime[19], avg);
-}
+}*/

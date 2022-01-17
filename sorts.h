@@ -7,7 +7,6 @@
 
 //Bubblesort-functions
 void bubble_sort(short array[], unsigned int size);
-void bubble_sort_double(double array[], unsigned int size);
 
 //Mergesort-functions
 void merge(short array[], int first_index, int mid, int last_index);
