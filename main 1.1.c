@@ -68,9 +68,9 @@ int main() {
     printf("Unsorted array with size of 64:\n");
     print_array(array_sixtyfour, 64);
 
-    merge_Sort(array_eight, 0, 8);
-    merge_Sort(array_sixteen, 0, 16);
-    merge_Sort(array_sixtyfour, 0, 64);
+    merge_Sort(array_eight, 0, 7);
+    merge_Sort(array_sixteen, 0, 15);
+    merge_Sort(array_sixtyfour, 0, 63);
 
     printf("Array with size of 8 after MERGESORT:\n");
     print_array(array_eight, 8);
@@ -132,9 +132,9 @@ int main() {
     printf("Unsorted array with size of 64:\n");
     print_array(array_sixtyfour, 64);
 
-    quickSort(array_eight, 0, 8);
-    quickSort(array_sixteen, 0, 16);
-    quickSort(array_sixtyfour, 0, 64);
+    quickSort(array_eight, 0, 7);
+    quickSort(array_sixteen, 0, 15);
+    quickSort(array_sixtyfour, 0, 63);
 
     printf("Array with size of 8 after QUICKSORT:\n");
     print_array(array_eight, 8);
